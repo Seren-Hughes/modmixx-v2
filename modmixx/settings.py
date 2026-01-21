@@ -32,12 +32,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG") == "True"
 
-ALLOWED_HOSTS = [
-    "https://modmixx-427f89e87a1b.herokuapp.com/",
-    ".herokuapp.com",
-    "localhost",
-    "127.0.0.1",
-]
+# Parse ALLOWED_HOSTS from environment variable
+allowed_hosts_env = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1")
+ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(",")]
 
 
 # Application definition
