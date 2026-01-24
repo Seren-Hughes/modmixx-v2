@@ -2,7 +2,7 @@
 ![modmixx am i responsive screenshot](docs/images/screenshots/modmixx-mockup-devices-screenshot.png)
 
 ## Tech Stack
-![Python](https://img.shields.io/badge/Python-3.13-blue?style=flat&logo=python&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.12-blue?style=flat&logo=python&logoColor=white)
 ![Django](https://img.shields.io/badge/Django-5.2.4-092E20?style=flat&logo=django&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?style=flat&logo=javascript&logoColor=black)
 ![AWS](https://img.shields.io/badge/AWS-S3%20%7C%20Rekognition-FF9900?style=flat&logo=amazon-aws&logoColor=white)
@@ -69,7 +69,7 @@
 
 **modmixx** is a web-based platform designed to foster creativity and collaboration among music makers of all skill levels. It provides a safe, inclusive space where users can share unfinished ideas, learn from others, and build meaningful connections. The platform prioritises creativity over perfection and community over competition, offering an alternative to traditional self-promotion-focused platforms.
 
-[Live Site](https://modmixx-427f89e87a1b.herokuapp.com/) 
+[Live Site](https://modmixx.tech/) 
 
 *Note: Currently hosted on Heroku with eco dynos - initial load may take 10-15 seconds as dynos require wake-up time after periods of inactivity*
 
