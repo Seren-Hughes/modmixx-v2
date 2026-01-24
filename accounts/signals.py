@@ -5,7 +5,10 @@ from allauth.socialaccount.signals import (
     social_account_removed,
 )
 from django.core.mail import send_mail
+from django.db.models.signals import post_save
 from django.dispatch import receiver
+
+from .models import CustomUser, Profile
 
 
 @receiver(user_signed_up)
@@ -133,3 +136,17 @@ def send_disconnection_email(sender, request, socialaccount, **kwargs):
                 )
         except Exception as e:
             print(f"Failed to send Gmail disconnection email: {e}")
+
+
+@receiver(post_save, sender=CustomUser)
+def create_user_profile(sender, instance, created, **kwargs):
+    """Create a profile for every new user."""
+    if created:
+        Profile.objects.create(user=instance)
+
+
+@receiver(post_save, sender=CustomUser)
+def save_user_profile(sender, instance, **kwargs):
+    """Save the profile when user is saved."""
+    if hasattr(instance, "profile"):
+        instance.profile.save()

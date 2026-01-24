@@ -28,7 +28,6 @@ def signup(request):
         if form.is_valid():
             try:
                 user = form.save()
-                Profile.objects.create(user=user)
                 login(
                     request,
                     user,
@@ -156,16 +155,17 @@ def login_redirect(request):
     user = request.user
 
     # Create profile if it doesn't exist
-    if not hasattr(user, "profile"):
+    try:
+        profile = user.profile
+        # Redirect to setup if username is missing
+        if not profile.username:
+            return redirect("profile_setup")
+        # Redirect to user's profile
+        return redirect("profile", username=profile.username)
+    except Profile.DoesNotExist:
+        # Create profile and redirect to setup
         Profile.objects.create(user=user)
         return redirect("profile_setup")
-
-    # Redirect to setup if username is missing
-    if not user.profile.username:
-        return redirect("profile_setup")
-
-    # Redirect to user's profile
-    return redirect("profile", username=user.profile.username)
 
 
 @login_required
