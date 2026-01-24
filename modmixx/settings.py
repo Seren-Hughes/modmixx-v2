@@ -36,6 +36,15 @@ DEBUG = os.environ.get("DEBUG") == "True"
 allowed_hosts_env = os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1")
 ALLOWED_HOSTS = [host.strip() for host in allowed_hosts_env.split(",")]
 
+# SSL/Security settings - environment specific
+if DEBUG:
+    # Development settings - no SSL redirect
+    SECURE_SSL_REDIRECT = False
+    SECURE_PROXY_SSL_HEADER = None
+else:
+    # Production settings - force enable SSL
+    SECURE_SSL_REDIRECT = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Application definition
 
