@@ -173,6 +173,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
+        "APP": {
+            "client_id": os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_KEY"),
+            "secret": os.environ.get("SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET"),
+        },
         "SCOPE": [
             "profile",
             "email",
@@ -190,7 +194,7 @@ SOCIALACCOUNT_PROVIDERS = {
 # Implements email-based authentication with Google OAuth integration
 # Configured for sheltered community approach (members-only content)
 # Environment-specific SITE_ID
-SITE_ID = int(os.environ.get("SITE_ID", "1"))  # Default to 1 for production
+SITE_ID = int(os.environ.get("SITE_ID", "2"))  # Default to 2 for production
 
 # Current Allauth 65+ settings format
 ACCOUNT_LOGIN_METHODS = {"email"}
@@ -256,8 +260,10 @@ STORAGES = {
     },
 }
 
-# Perspective API
+# Content Moderation Settings
+# Perspective API 
 PERSPECTIVE_API_KEY = os.environ.get("PERSPECTIVE_API_KEY")
+
 
 # Rekognition config
 AWS_REGION = os.environ.get("AWS_REGION", "eu-west-1")
