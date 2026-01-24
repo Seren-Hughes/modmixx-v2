@@ -126,6 +126,8 @@ class Profile(models.Model):
     username = models.SlugField(
         max_length=30,
         unique=True,
+        blank=True,
+        null=True,
         help_text="Your unique profile URL (no spaces, letters/numbers only)",
     )
     display_name = models.CharField(
