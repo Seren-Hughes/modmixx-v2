@@ -16,7 +16,9 @@
                              alt="{{ profile.display_name|default:profile.username }}">
                     {% else %}
                         <div class="profile-picture-placeholder">
-                            <span class="profile-initial">{{ profile.display_name|first|upper|default:profile.username|first|upper }}</span>
+                            <span class="profile-initial">
+                              {{ profile.display_name|default:profile.username|default:profile.user.email|first|upper }}
+                            </span>
                         </div>
                     {% endif %}
                 </div>
