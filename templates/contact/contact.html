@@ -16,10 +16,21 @@ Contact modmixx - Get in touch with our team. Ask questions, report issues, or p
       {{ form.non_field_errors }}
     </div>
   {% endif %}
+
+  {% if form.errors %}
+  <div class="alert alert-danger">
+    {{ form.errors }}
+  </div>
+  {% endif %}
   
   <!-- Contact form -->
-  <form method="post" class="auth-form">
+  <form method="post" class="auth-form" id="contact-form">
     {% csrf_token %}
+    {{ form.media }} <!-- Include any media (like reCAPTCHA JS) -->
+    <!-- Render hidden fields (like reCAPTCHA token) -->
+    {% for hidden in form.hidden_fields %}
+      {{ hidden }}
+    {% endfor %}
     <!-- Name and email side by side on desktop -->
     <div class="contact-row">
       <div class="contact-col">
@@ -33,7 +44,10 @@ Contact modmixx - Get in touch with our team. Ask questions, report issues, or p
     {{ form.subject|as_crispy_field }}
     {{ form.message|as_crispy_field }}
     <!-- Submit button -->
-    <button type="submit" class="auth-submit-btn">Send</button>
+    <button type="submit" class="auth-submit-btn" id="contact-submit-btn" data-default-text="Send">Send</button>
   </form>
 </div>
+{% block extra_js %}
+    {% load static %}
+    <script src="{% static 'js/contact.js' %}"></script>
 {% endblock %}
