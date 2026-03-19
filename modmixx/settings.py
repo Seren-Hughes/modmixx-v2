@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     "comments",  # App for managing comments
     "contact",  # App for managing contact forms
     "storages",  # For AWS S3 storage
+    "captcha",  # For reCAPTCHA integration in forms
 ]
 
 MIDDLEWARE = [
@@ -284,3 +285,7 @@ REKOG_MIN_CONFIDENCE = int(os.environ.get("REKOG_MIN_CONFIDENCE", "80"))
 # Rekognition credentials
 REKOGNITION_ACCESS_KEY = os.environ.get("REKOGNITION_ACCESS_KEY")
 REKOGNITION_SECRET = os.environ.get("REKOGNITION_SECRET")
+
+# reCAPTCHA keys
+RECAPTCHA_PUBLIC_KEY = os.environ.get("RECAPTCHA_PUBLIC_KEY")
+RECAPTCHA_PRIVATE_KEY = os.environ.get("RECAPTCHA_PRIVATE_KEY")

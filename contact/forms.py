@@ -1,4 +1,7 @@
 from django import forms
+from django import forms
+from captcha.fields import ReCaptchaField  # type: ignore
+from captcha.widgets import ReCaptchaV3  # type: ignore
 
 
 class ContactForm(forms.Form):
@@ -32,6 +35,7 @@ class ContactForm(forms.Form):
     website = forms.CharField(
         required=False, widget=forms.HiddenInput
     )  # Honeypot field to catch spam bots
+    captcha = ReCaptchaField(widget=ReCaptchaV3())
 
     def clean_website(self):
         data = self.cleaned_data["website"]
