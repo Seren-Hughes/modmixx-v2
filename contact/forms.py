@@ -1,5 +1,4 @@
 from django import forms
-from django import forms
 from captcha.fields import ReCaptchaField  # type: ignore
 from captcha.widgets import ReCaptchaV3  # type: ignore
 
