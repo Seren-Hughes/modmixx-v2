@@ -1,6 +1,6 @@
 from django import forms
-from captcha.fields import ReCaptchaField  # type: ignore
-from captcha.widgets import ReCaptchaV3  # type: ignore
+from django_recaptcha.fields import ReCaptchaField
+from django_recaptcha.widgets import ReCaptchaV3
 
 
 class ContactForm(forms.Form):

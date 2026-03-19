@@ -68,7 +68,7 @@ INSTALLED_APPS = [
     "comments",  # App for managing comments
     "contact",  # App for managing contact forms
     "storages",  # For AWS S3 storage
-    "captcha",  # For reCAPTCHA integration in forms
+    "django_recaptcha",  # For reCAPTCHA integration in forms
 ]
 
 MIDDLEWARE = [
